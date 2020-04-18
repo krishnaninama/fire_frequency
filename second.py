@@ -32,8 +32,12 @@ from qgis.utils import iface
 from PyQt5.QtCore import QVariant #to add attribute QVariant gives the type of attribute<string or integer
 #following imports for taking inputs from user
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit
+# from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit
+#i added QFileDialog to import to take input of csv file form user.
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
 from PyQt5.QtGui import QIcon
+
+from pathlib import Path
 
 #creation of field of fire frequency_of_fire
 lyr = iface.activeLayer()
@@ -62,7 +66,30 @@ lyr.commitChanges()
 list1 = []
 list2 = []
 #reading the csv file
-file = r'/Users/krishnaninama/Documents/test/Dewas/test.csv'
+
+class selectCsvOfFrequency(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.title = 'Select the csv file containing frequency data please'
+        self.left = 10
+        self.top = 10
+        self.width = 640
+        self.height = 480
+        
+    
+   
+    
+    def openFileNameDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if fileName:
+            print(fileName)
+            return fileName
+selectCsv = selectCsvOfFrequency()
+file = Path(selectCsv.openFileNameDialog())
+#file = r'/Users/krishnaninama/Documents/test/Dewas/test.csv'
 df = pd.read_csv(file, header = None)
 #putting the values of names of beat/range to list1 and number fo fire to list2
 list1 = list (df[0]) 
@@ -100,6 +127,11 @@ name_of_level = selection.getChoice()
 
 #name_of_level = 'Beat_Name'
 
+#item, okPressed = QInputDialog.getItem(self, "Get item","Color:", items, 0, False)
+#list_of_fields, okPressed = QInputDialog.getItem(self, "Get item","Color:", items, 0, False)
+
+#create an object from class Qwidget
+
 list_of_features = list1               #this will be taken from the csv file. the features can be range, beat, compartment,etc
 frequency_of_fire = list2
 #now i want to select the feature form this list.for this.
@@ -117,6 +149,5 @@ for i in list_of_features:
     lyr.removeSelection()
 
 lyr.updateFields()
-x = 0
 
 #exec(open('/Users/krishnaninama/Documents/test/Dewas/final_working_script.py'.encode('utf-8')).read())
