@@ -86,4 +86,5 @@ lyr.updateFields()
 
 
 #code to execute a python script form python console
-exec(open('D:/Fire analysis/Untitled-0.py'.encode('utf-8')).read())
+#exec(open('D:/Fire analysis/Untitled-0.py'.encode('utf-8')).read())
+#if you uncomment it the script will run in infinite loop. BE CAREFULL!!
