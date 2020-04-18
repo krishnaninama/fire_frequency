@@ -11,14 +11,11 @@ How to
 7. You will get the frequency in frequency_output.csv file.
 8. Open the second script and add the path of the frequency file like this.
 file = r'D:\Fire analysis\Dewas\fire_frequency.csv'
-9. In the line 67 enter the name of level of interest. The name should be same as that in the attribute table. Example
-name_of_level = 'Beat_Name'
-
-
 10.Now open QGIS
 11. Load the project that contains the shapefile in which you want the data entered.
 9. Select the layer you want to modify.
 10. Open python console.
 11. Click show editor button just above the python console.
 12. Copy and paste the script and run it.
-13. You will get the new field as fire_f containing the frequencies.
+13. Select the level at which you want to enter the frequency data.
+14. You will get the new field as fire_f containing the frequencies.
