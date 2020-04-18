@@ -1,4 +1,3 @@
-#imports
 from pandas import DataFrame, read_csv
 import matplotlib.pyplot as plt
 import pandas as pd 
@@ -31,6 +30,10 @@ from qgis.core import (
 )
 from qgis.utils import iface
 from PyQt5.QtCore import QVariant #to add attribute QVariant gives the type of attribute<string or integer
+#following imports for taking inputs from user
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit
+from PyQt5.QtGui import QIcon
 
 #creation of field of fire frequency_of_fire
 lyr = iface.activeLayer()
@@ -38,6 +41,7 @@ dp = lyr.dataProvider()
 #check if the field is already there or not
 
 list_of_fields = lyr.fields().names()
+
 if 'fire_f' not in list_of_fields:
     dp.addAttributes( [QgsField ("fire_f" , QVariant.String)])
     lyr.updateFields()
@@ -58,14 +62,44 @@ lyr.commitChanges()
 list1 = []
 list2 = []
 #reading the csv file
-file = r'D:\Fire analysis\Dewas\test.csv'
+file = r'/Users/krishnaninama/Documents/test/Dewas/test.csv'
 df = pd.read_csv(file, header = None)
 #putting the values of names of beat/range to list1 and number fo fire to list2
 list1 = list (df[0]) 
 list2 = list (df[1])
 
-#name_of_level = input('input the name of the field of the intrested level in the attribute table')
-name_of_level = 'Beat_Name'
+
+#commenting this because input() doesn't work in qgis console 
+#name_of_level = input ('kindly enter the name of field form the list above for which you want to enter the frequency data:')
+
+#method to take input from user. he will select from a list and we will take that input
+class selectionOfLevel(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.title = 'Select level at which you want to enter frequency data'
+        self.left = 10
+        self.top = 10
+        self.width = 640
+        self.height = 480
+        
+        
+    
+        
+    def getChoice(self):
+        items = list_of_fields
+        item, okPressed = QInputDialog.getItem(self, "Get item","Color:", items, 0, False)
+        if okPressed and item:
+            print(item)
+            return item
+
+    
+
+selection = selectionOfLevel()
+name_of_level = selection.getChoice()
+
+#name_of_level = 'Beat_Name'
+
 list_of_features = list1               #this will be taken from the csv file. the features can be range, beat, compartment,etc
 frequency_of_fire = list2
 #now i want to select the feature form this list.for this.
@@ -83,8 +117,6 @@ for i in list_of_features:
     lyr.removeSelection()
 
 lyr.updateFields()
+x = 0
 
-
-#code to execute a python script form python console
-#exec(open('D:/Fire analysis/Untitled-0.py'.encode('utf-8')).read())
-#if you uncomment it the script will run in infinite loop. BE CAREFULL!!
+#exec(open('/Users/krishnaninama/Documents/test/Dewas/final_working_script.py'.encode('utf-8')).read())
