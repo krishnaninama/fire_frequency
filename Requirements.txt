@@ -1,0 +1,4 @@
+You will need
+1. Python 3.x
+2. QGIS 3.X
+3. Pandas installed in QGIS python shell.
