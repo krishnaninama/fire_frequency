@@ -217,3 +217,5 @@ for i in list_of_features:
     lyr.removeSelection()
 
 lyr.updateFields()
+x = 0
+# exec(open('/Users/nameofuser/Documents/test/test.py'.encode('utf-8')).read()) ----for mac
