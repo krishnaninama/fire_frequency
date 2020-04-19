@@ -1,5 +1,3 @@
-#PART 1
-
 #import for part2
 
 from pandas import DataFrame, read_csv
@@ -33,7 +31,8 @@ from qgis.core import (
   QgsSpatialIndex,
 )
 from qgis.utils import iface
-from PyQt5.QtCore import QVariant #to add attribute QVariant gives the type of attribute<string or integer
+#to add attribute QVariant gives the type of attribute<string or integer
+from PyQt5.QtCore import QVariant 
 #following imports for taking inputs from user
 import sys
 # from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit
@@ -217,3 +216,5 @@ for i in list_of_features:
     lyr.removeSelection()
 
 lyr.updateFields()
+x = 0
+# exec(open('/Users/nameofuser/Documents/test/test.py'.encode('utf-8')).read()) ----for mac
