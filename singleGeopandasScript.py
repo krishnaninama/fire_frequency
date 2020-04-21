@@ -14,9 +14,10 @@ from pathlib import Path
 def importingCsv():
 
     # get the path of file
-    pathOfFile = Path(input('Kindly input the path of csv file: '))
+    # pathOfFile = Path(input('Kindly input the path of csv file: '))
 
     # /Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv ---->test path
+    pathOfFile = Path('/Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv')
 
     # read the file into pandas dataframe
 
@@ -39,18 +40,11 @@ coloumnInFirePointData = firePointData.columns
 print(coloumnInFirePointData)
 
 # get the input of level
-selectedLevel = input ('Enter a heading: ')
-
-#create an empty list which will contain the unique values from the said 
-
-
-# get the input of level
-# selectedLevel = input ('Enter a heading: ')
+selectedLevel = input ('Enter a heading:')
 
 # create an empty list which will contain the unique values from the said 
 unique_list = []
 # print(firePointData['Range'])
-
 
 # getting a list from a column of a dataframe
 rawlist = firePointData[selectedLevel].to_list()
@@ -76,15 +70,18 @@ for i in unique_list:
 # importing csv to write csv file output
 import csv
 
+
+# trying to set the path of frequency file save location
+saveLocationOfFireFrequency = Path(input('Where do you want to save the frequency output and name the file also with .csv extension'))
+
 print(freq_result)
-w = csv.writer(open('frequnecy_output.csv', 'w') )
+w = csv.writer(open(saveLocationOfFireFrequency, 'w') )
 for key, val in freq_result.items():
     w.writerow([key,val])
 
- 
 
 # now we have the frequency values
-# we can move to importing the shpe file and changing
+# we can move to importing the shape file and changing
 # the attribute table and enter the values of fire frequency
 
 # import geopandas to read the csv file
@@ -94,9 +91,9 @@ import matplotlib.pyplot as plt
 
 #get the path of shpaefile
 
-fp = r'/Users/krishnaninama/Documents/test/Dewas/test/crs_test.shp'
+# fp = r'/Users/krishnaninama/Documents/test/Dewas/test/crs_test.shp'
 
-# fp = Path(input('enter the path of shapefile'))
+fp = Path(input('enter the path of shapefile'))
 
 # read the file using geopandas
 
@@ -107,17 +104,8 @@ data = gpd.read_file(fp)
 # adding new field
 data["fire_f"]= 0
 
-# writing to new shape file
-
-# writing to a file
-# data.to_file("/Users/krishnaninama/Documents/test/Dewas/geop/crs_test.shp")
-
-#add new field to attribute table
-
-
-
-#dewas = data.plot()
-#plt.show()
+# dewas = data.plot()
+# plt.show()
 
 
 # we can use both the dictionary we outputed or we can call back
@@ -139,10 +127,19 @@ for value in freq_result.keys():
 # now we try to test weather it worked or not
 print(data.head())
 
-data.to_file("/Users/krishnaninama/Documents/test/Dewas/geop/crs_test.shp")
+# writing to new shape file
+
+# writing to a file
+# data.to_file("/Users/krishnaninama/Documents/test/Dewas/geop/crs_test.shp")
+
+# ask user where he want to save the file
+saveFileLocation = Path(input('Enter the path where you want to save the modified shape file'))
+
+# writing to that path
+data.to_file(saveFileLocation)
 
 
-#method didn;t work becauase of an space at the end.
+# method didnt work earlier becauase of an space at the end.
 # to remove thhis space i will have to use srtip method at appropriate place.
 # the space is coing from the input fire point csv file
 
