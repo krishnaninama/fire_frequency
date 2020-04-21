@@ -115,10 +115,13 @@ data["fire_f"]= 0
 # first we are going to try and use the diciotnary
 # the dicitonary that contains the values is freq_result{}
 
+# input doesn't work. error is that the dataframe has no such metho
+# fieldOfFire = input('name of field whose fire_f attributes are being changed: ')
+
 for value in freq_result.keys():
 
     # this code will give us the index of the rows which have the string 
-    index_c = data[data.Range_Name.str.match(value,case = False)].index.tolist()
+    index_c = data[data.Beat_Name.str.match(value,case = False)].index.tolist()
 
     # now we want to set the fire values of the indices
     for j in index_c:
@@ -144,3 +147,15 @@ data.to_file(saveFileLocation)
 # the space is coing from the input fire point csv file
 
 
+# now we will plot the map
+# to plot we have to import matplotlib. we have already done that
+
+filePathOfModifiedShapeFile = saveFileLocation
+
+dataOfFire = gpd.read_file(filePathOfModifiedShapeFile)
+
+beatFireMap = dataOfFire.plot(column = 'fire_f', cmap='OrRd', categorical= True, legend=True)
+
+#setting title
+beatFireMap.set_Title('Beat Fire Map')
+plt.show()
