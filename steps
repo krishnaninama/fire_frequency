@@ -1,7 +1,7 @@
 How to
 1. First check that you have all the softwares installed. 
 2. Make a new folder and put these files there
-	a. The two scripts.
+	a. The two scripts, "first.py" and "second.py"
 	b. The fire data.(excel file)
 	c. The shapefile which you want to modify.
 3. First open the excel file containing the fire data and save it as csv file. Give it the following name : "fire_data.csv" Take care of capitalisation.
@@ -9,7 +9,7 @@ How to
 5. Run the first script.
 6. Enter the data it wants.
 7. You will get the frequency in frequency_output.csv file.
-8.Now open QGIS
+8. Now open QGIS
 9. Load the project that contains the shapefile in which you want the data entered.
 10. Select the layer you want to modify.
 11. Open python console.
