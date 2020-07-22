@@ -1,0 +1,2 @@
+1. Copy the geopandas script, your fire frequency data file in csv format and the shape file in a folder.
+2. Run the script.
