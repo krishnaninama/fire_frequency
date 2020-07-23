@@ -16,8 +16,8 @@ def importingCsv():
     # get the path of file
     # pathOfFile = Path(input('Kindly input the path of csv file: '))
 
-    # /Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv ---->test path
-    pathOfFile = Path('/Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv')
+    
+    pathOfFile = Path('/Users/Test/Documents/fire_points.csv')
 
     # read the file into pandas dataframe
 
@@ -91,7 +91,7 @@ import matplotlib.pyplot as plt
 
 #get the path of shpaefile
 
-# fp = r'/Users/krishnaninama/Documents/test/Dewas/test/crs_test.shp'
+# fp = Path of the shapefile in which you want to enter the frequency data.'
 
 fp = Path(input('enter the path of shapefile'))
 
@@ -133,7 +133,7 @@ print(data.head())
 # writing to new shape file
 
 # writing to a file
-# data.to_file("/Users/krishnaninama/Documents/test/Dewas/geop/crs_test.shp")
+
 
 # ask user where he want to save the file
 saveFileLocation = Path(input('Enter the path where you want to save the modified shape file'))
