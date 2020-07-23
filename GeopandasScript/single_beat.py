@@ -16,8 +16,8 @@ def importingCsv():
     # get the path of file
     pathOfFile = Path(input('Kindly input the path of csv file: '))
 
-    # /Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv ---->test path
-    # pathOfFile = Path('/Users/krishnaninama/Documents/test/Dewas/geop/fire_points.csv')
+    
+    # pathOfFile = Path('/Users/Test/Documents/fire_points.csv')
 
     # read the file into pandas dataframe
 
@@ -91,7 +91,7 @@ import matplotlib.pyplot as plt
 
 #get the path of shpaefile
 
-# fp = r'/Users/krishnaninama/Documents/test/Dewas/test/crs_test.shp'
+# fp = path of the shape file in which you want to enter the frequency data
 
 fp = Path(input('enter the path of shapefile'))
 
@@ -104,7 +104,7 @@ data = gpd.read_file(fp)
 # adding new field
 data["fire_f"]= 0
 
-# dewas = data.plot()
+# 
 # plt.show()
 
 
@@ -133,7 +133,7 @@ print(data.head())
 # writing to new shape file
 
 # writing to a file
-# data.to_file("/Users/krishnaninama/Documents/test/Dewas/geop/crs_test.shp")
+# data.to_file("Path where you want to save the shape file")
 
 # ask user where he want to save the file
 saveFileLocation = Path(input('Enter the path where you want to save the modified shape file'))
@@ -168,9 +168,9 @@ dataOfFire.apply(lambda x:beatFireMap.annotate(s=x.Beat_Name,xy=x.geometry.centr
 # showing the file
 # plt.show()
 
-#saving the file
-
-plt.savefig('/Users/krishnaninama/Documents/test/Dewas/geop/beat/beatmap_withoutaxis.png')
+# saving the file
+# enter the path where you want to save the file
+plt.savefig('/Users/Test/Documents/beatmap.png')
 
 
 
