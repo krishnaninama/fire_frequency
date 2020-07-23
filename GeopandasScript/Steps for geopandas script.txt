@@ -1,2 +1,19 @@
 1. Copy the geopandas script, your fire frequency data file in csv format and the shape file in a folder.
-2. Run the script.
+2. Download miniconda.
+2. From start menu start anaconda prompt (miniconda)
+3. Go to the installation directory of minicoda
+4. Run the command conda update conda
+5.	Say yes and the installation will be updated.
+6.	Make a virtual environment using this command, conda create --name snowflakes biopython
+7.	https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda
+8.	Install following libraries
+  a.	Pandas
+  b.	Matplotlib
+  c.	Geopandas
+  d.	Numpy
+9.	Open the script using a text editor. 
+10.	Go to line 20 and set pathofile variable to the path of your fire point data. The data should be in csv format.
+11.	Go to line no 164 and set the path of final path of the output image file in plt.savefig
+
+ 
+Run the script.
