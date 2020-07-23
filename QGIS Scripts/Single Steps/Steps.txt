@@ -1,0 +1,1 @@
+This single script when run in QGIS python console can take a frequency data from a csv file and then put the frequency in the attribute table.
