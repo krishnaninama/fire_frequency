@@ -18,3 +18,9 @@ How to
 14. Select your file containing frequency data.(csv file) 
 15. Select the level at which you want to enter the frequency data.
 16. You will get the new field as fire_f containing the frequencies.
+
+Before you use these scripts kindly keep in mind these points
+1. The name of beat/range/division should be same on the fire point data and the shapefile.
+2. You might need to install pandas library in QGIS. Its python files are seperate from the system one.
+3. This script will need python version greater than 3.0
+4. 
