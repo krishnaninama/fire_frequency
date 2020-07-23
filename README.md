@@ -1,4 +1,4 @@
-# fire_frequency
+# Automation of fire analysis
 Finds frequency from FSI data and adds this data to shapefile.
 
 Hello. I am Krishna Ninama an ACF in Madhya Pradesh Forest Department. 
