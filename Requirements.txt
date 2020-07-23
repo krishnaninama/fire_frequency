@@ -1,4 +1,11 @@
-You will need
+For QGIS Scripts, You will need
 1. Python 3.x
 2. QGIS 3.X
 3. Pandas installed in QGIS python shell.
+
+For geopandas scripts you will need
+1. Python 3.x
+2. Geopandas library
+3. Pandas library
+4. Matplotlib library.
+It's advisable to use Anaconda for this. You can download miniconda and then install these libraries. Detailed instruction are provided in the script folder.
